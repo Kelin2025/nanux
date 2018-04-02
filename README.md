@@ -32,13 +32,15 @@ store.dispatch("plus", 5) // => 6
 
 > **NOTE**: `dispatch` returns new state or Promise with new state
 
-### Subscribe to changes
+### Subscribe/unsubscribe to changes
 
 ```javascript
-store.subscribe((newState, oldState) => {
+const cb = store.subscribe((newState, oldState) => {
   console.log('Old state', oldState)
   console.log('New state', newState)
 }
+
+store.unsubscribe(cb)
 ```
 
 ### Using middlewares
@@ -60,6 +62,8 @@ const store = new Store({
 
 store.dispatch("plus", 5) // => -4
 ```
+
+> **NOTE**: if middleware returns `null`, action and all next middlewares will be aborted.
 
 ### Asynchronous actions/middlewares
 
@@ -89,7 +93,7 @@ const store = new Store({
     loadItems (state, _, { dispatch }) => {
       dispatch('setFetching', true)
       return fetch('/items').then(res => {
-        dispatch('isFetching', false)
+        dispatch('setFetching', false)
         return { ...state, items: res.body }
       })
     }
