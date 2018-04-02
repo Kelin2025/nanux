@@ -146,6 +146,8 @@ this.$store.moduleA.dispatch("foo", "bar")
 ##### Global
 
 * [ ] Add advanced events guide to README.md
+* [ ] Getters
+* [ ] Modules (?)
 * [ ] Write tests/types
 
 ##### Vue
