@@ -6,8 +6,9 @@ export default Vue => {
       this.$storeWatchers = {}
       Object.entries(this.$options.stores).forEach(([name, store]) => {
         store = typeof store === "function" ? store() : store
+        this.$store[name] = store
         const update = newState => {
-          this.$store[name] = newState
+          this.$store[name].state = newState
           this.$forceUpdate()
         }
         this.$storeWatchers[name] = store.subscribe(update)
