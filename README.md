@@ -2,9 +2,10 @@
 
 State, actions and middlewares in just 1 KB
 
-[Installation](#installation)
-[Fast guide](#fast-guide)
-[Vue integration](#vue-integration)
+[**Installation**](#installation)  
+[**Fast guide**](#fast-guide)  
+[**Vue integration**](#vue-integration)
+[**TODO**](#todo)
 
 ## Installation
 
