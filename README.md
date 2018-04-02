@@ -2,6 +2,10 @@
 
 State, actions and middlewares in just 1 KB
 
+[Installation](#installation)
+[Fast guide](#fast-guide)
+[Vue integration](#vue-integration)
+
 ## Installation
 
 ```
@@ -100,6 +104,53 @@ const store = new Store({
   }
 })
 ```
+
+## Vue integration
+
+### Usage
+
+##### Install mixin
+
+```javascript
+import Vue from "vue"
+import VueNanux from "nanux/mixins/vue"
+
+Vue.use(VueNanux)
+```
+
+##### Add store modules to your components
+
+```javascript
+import { moduleA, moduleB } from "./stores"
+
+export default {
+  stores: {
+    moduleA,
+    moduleB
+  }
+}
+```
+
+#### Use `$store`
+
+```javascript
+this.$store.moduleA.state
+this.$store.moduleA.dispatch("foo", "bar")
+```
+
+> **NOTE**: `dispatch` triggers `$forceUpdate` to apply changes
+
+## TODO
+
+##### Global
+
+* [ ] Add advanced events guide to README.md
+* [ ] Write tests/types
+
+##### Vue
+
+* [ ] Deep-pass of store modules (maybe `provide/inject`?)
+* [ ] Add mapState/mapActions helpers
 
 ## License
 
