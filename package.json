@@ -1,6 +1,6 @@
 {
   "name": "nanux",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "State, actions and middlewares lighter than 1 KB",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
@@ -14,7 +14,12 @@
   "scripts": {
     "size": "size-limit"
   },
-  "size-limit": [{ "path": "./lib/index.js", "size": "1 KB" }],
+  "size-limit": [
+    {
+      "path": "./lib/index.js",
+      "size": "1 KB"
+    }
+  ],
   "devDependencies": {
     "size-limit": "^0.17.0"
   }
