@@ -1,0 +1,21 @@
+{
+  "name": "nanux",
+  "version": "0.1.0",
+  "description": "State, actions and middlewares lighter than 1 KB",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "repository": "https://github.com/kelin2025/nanux",
+  "author": "Anton Kosykh <kelin2025@yandex.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "nanoevents": "^1.0.2",
+    "nanoid": "^1.0.2"
+  },
+  "scripts": {
+    "size": "size-limit"
+  },
+  "size-limit": [{ "path": "./lib/index.js", "size": "1 KB" }],
+  "devDependencies": {
+    "size-limit": "^0.17.0"
+  }
+}
