@@ -1,5 +1,7 @@
 # Nanux
 
+State, actions and middlewares in just 1 KB
+
 ## Installation
 
 ```
@@ -11,8 +13,8 @@ npm install nanux
 
 ### Create a store
 
-```
-import { Store } from 'nanux'
+```javascript
+import { Store } from "nanux"
 
 const store = new Store({
   state: 1,
@@ -24,13 +26,15 @@ const store = new Store({
 
 ### Dispatch actions
 
+```javascript
+store.dispatch("plus", 5) // => 6
 ```
-store.dispatch('plus', 5) // => 6
-```
+
+> **NOTE**: `dispatch` returns new state or Promise with new state
 
 ### Subscribe to changes
 
-```
+```javascript
 store.subscribe((newState, oldState) => {
   console.log('Old state', oldState)
   console.log('New state', newState)
@@ -39,7 +43,7 @@ store.subscribe((newState, oldState) => {
 
 ### Using middlewares
 
-```
+```javascript
 const store = new Store({
   state: 1,
   actions: {
@@ -48,33 +52,33 @@ const store = new Store({
   },
   middlewares: [
     ({ action, payload }) => ({
-      action: 'minus',
+      action: "minus",
       payload
     })
   ]
 })
 
-store.dispatch('plus', 5) // => -4
+store.dispatch("plus", 5) // => -4
 ```
 
 ### Asynchronous actions/middlewares
 
-```
+```javascript
 const store = new Store({
   state: 1,
   actions: {
-    plus: (state, val) =>
-      new Promise(res => setTimeout(res, 1000, val + 1))
+    plus: (state, val) => new Promise(res => setTimeout(res, 1000, val + 1))
   },
   middlewares: [
-    ({ action, payload }) => new Promise(res => setTimeout(res, 1000, { action, payload }))
+    ({ action, payload }) =>
+      new Promise(res => setTimeout(res, 1000, { action, payload }))
   ]
 })
 ```
 
 ### Dispatch another actions inside action
 
-```
+```javascript
 const store = new Store({
   state: {
     isFetching: false,
