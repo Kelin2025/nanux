@@ -16,15 +16,15 @@ export const StoreProvider = {
     }
   },
   methods: {
-    dispatch(...args) {
-      return this.store.dispatch(...args)
+    dispatch() {
+      return this.store.dispatch.apply(this.store, arguments)
     }
   },
   render(h) {
     return this.$slots.default[0]
   },
   created() {
-    this.unsubscribe = this.store.subscribe(({ newState }) => {
+    this.unsubscribe = this.store.subscribe(newState => {
       this.state = newState
     })
   },
