@@ -1,3 +1,37 @@
+import { Store } from "../lib"
+
+export const StoreProvider = {
+  props: {
+    store: { type: Store, required: true }
+  },
+  provide() {
+    return {
+      [this.name]: this
+    }
+  },
+  data() {
+    return {
+      state: this.store.getState()
+    }
+  },
+  methods: {
+    dispatch(...args) {
+      return this.store.dispatch(...args)
+    }
+  },
+  render(h) {
+    return this.$slots.default[0]
+  },
+  created() {
+    this.unsubscribe = this.store.subscribe(({ newState }) => {
+      this.state = newState
+    })
+  },
+  beforeDestroy() {
+    this.unsubscribe()
+  }
+}
+
 export default Vue => {
   Vue.mixin({
     beforeCreate() {
