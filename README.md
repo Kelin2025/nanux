@@ -29,6 +29,22 @@ const store = new Store({
 })
 ```
 
+### Get state
+
+```javascript
+const store = new Store({
+  state: {
+    a: 1,
+    b: 2
+  }
+})
+
+store.getState() // => { a: 1, b: 2 }
+```
+
+> **NOTE**: It returns a shallow clone of objects to deny side effects.  
+> But you still can mutate deep properties.
+
 ### Dispatch actions
 
 ```javascript
