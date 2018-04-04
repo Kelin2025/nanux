@@ -46,7 +46,7 @@ export default Vue => {
           this.$forceUpdate()
         }
         this.$storeWatchers[name] = store.subscribe(update)
-        update(store.state)
+        update(store.getState())
       })
     },
     beforeDestroy() {
