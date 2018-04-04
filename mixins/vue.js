@@ -2,6 +2,7 @@ import { Store } from "../lib"
 
 export const StoreProvider = {
   props: {
+    name: { type: String, required: true }
     store: { type: Store, required: true }
   },
   provide() {
